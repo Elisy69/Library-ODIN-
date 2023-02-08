@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Roboto&family=Teko:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+    <title>Library</title>
+  </head>
+  <body>
+    <header><h1>Library</h1></header>
+    <div class="window">
+      <div class="wall-left"></div>
+      <div class="shelves">
+        <div class="addBook">
+          <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z"
+            />
+          </svg>
+        </div>
+        <div class="popUp" id="form">
+          <div class="popUp-header">
+            <h3 class="description">Your book description</h3>
+            <div class="exit">&times;</div>
+          </div>
+          <form class="newBookForm" action="" method="post">
+            <label for="book_title"
+              >Book title: <input type="text" id="book_title" name="book_title"
+            /></label>
+
+            <label for="book_author"
+              >Book author:
+              <input type="text" id="book_author" name="book_author"
+            /></label>
+
+            <label for="book_genre"
+              >Choose book's genre:
+              <select name="book_genre">
+                <option value="Sci-fi">Sci-fi</option>
+                <option value="History">History</option>
+                <option value="Biography">Biography</option>
+                <option value="Science">Science</option>
+                <option value="Programming">Programming</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Novel">Novel</option>
+                <option value="Religion">Religion</option>
+                <option value="Horror">Horror</option>
+              </select></label
+            >
+            <button class="submitbtn" type="submit">Submit</button>
+          </form>
+        </div>
+        <div id="overlay"></div>
+      </div>
+      <div class="wall-right"></div>
+    </div>
+  </body>
+</html>
