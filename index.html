@@ -32,19 +32,18 @@
             <h3 class="description">Your book description</h3>
             <div class="exit">&times;</div>
           </div>
-          <form class="newBookForm" action="" method="post">
+          <form class="newBookForm" action="" method="post" id="addBookForm">
             <label for="book_title"
-              >Book title: <input type="text" id="book_title" name="book_title"
+              >Book title: <input type="text" id="title" name="book_title"
             /></label>
 
             <label for="book_author"
-              >Book author:
-              <input type="text" id="book_author" name="book_author"
+              >Book author: <input type="text" id="author" name="book_author"
             /></label>
 
             <label for="book_genre"
               >Choose book's genre:
-              <select name="book_genre">
+              <select id="genre" name="book_genre">
                 <option value="Sci-fi">Sci-fi</option>
                 <option value="History">History</option>
                 <option value="Biography">Biography</option>

@@ -181,3 +181,9 @@ button:hover {
 button:hover {
   box-shadow: rgb(44, 62, 80) -4px 0px 15px 0px inset;
 }
+
+#removeBook {
+  width: 30px;
+  height: 30px;
+  fill: green;
+}
