@@ -162,7 +162,7 @@ select {
   width: 120px;
   height: 30px;
 }
-button {
+.button {
   all: unset;
   background-color: rgb(243, 174, 89);
   box-shadow: rgb(44, 62, 80) 0px 0px 15px 0px inset;
@@ -174,16 +174,35 @@ button {
   margin-top: 40px;
 }
 
-button:hover {
+.button:hover {
   background-color: green;
 }
 
-button:hover {
+.button:hover {
   box-shadow: rgb(44, 62, 80) -4px 0px 15px 0px inset;
 }
 
-#removeBook {
+.small {
+  width: 80px;
+  height: 25px;
+  font-size: 0.8rem;
+  color: rgb(144, 3, 3);
+}
+
+.removeBook {
   width: 30px;
   height: 30px;
-  fill: green;
+  fill: rgb(201, 144, 74);
+  border-radius: 0.5rem;
+}
+.removeBook:hover {
+  fill: red;
+}
+
+.finished {
+  color: green;
+}
+
+.finished:hover {
+  background-color: red;
 }

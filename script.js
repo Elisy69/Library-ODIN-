@@ -9,7 +9,7 @@ const UI = {
   SHELVES: document.querySelector(".shelves"),
   NEWBOOKBTN: document.getElementById("svg"),
   CLOSEBTN: document.querySelector(".exit"),
-  SUBMITBTN: document.querySelector(".submitbtn"),
+  SUBMITBTN: document.querySelector(".button"),
   OVERLAY: document.getElementById("overlay"),
   POPUP: document.querySelector(".popUp"),
   INPUTS: {
@@ -41,10 +41,21 @@ UI.SUBMITBTN.addEventListener("click", (event) => {
 let myLibrary = [];
 
 function Books() {}
-Books.prototype.changeReadStatus = function () {
-  // switch {
-  //     case()
-  // }
+Books.prototype.changeReadStatus = function (status) {
+  switch (status) {
+    case "read":
+      this.read = "not read";
+      console.log(`read${this.read}`);
+      break;
+    case "not read":
+      this.read = "read";
+      console.log(`not read${this.read}`);
+      break;
+    default:
+      this.read = "read";
+      console.log(`default${this.read}`);
+      break;
+  }
 };
 
 function Book(title, author, genre, read) {
@@ -73,11 +84,24 @@ function displayBookOnHtml() {
   myLibrary.forEach((book) => {
     let gridElement = document.createElement("div");
     let index = myLibrary.indexOf(book);
-    gridElement.setAttribute("data-index-number", `${index}`);
+    gridElement.setAttribute("id", `${index}`);
     gridElement.className = "book";
-    gridElement.innerHTML = `<svg id='removeBook' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" /></svg><span class='title'>${book.title}</span> by <span class='author'>${book.author}</span> <span class='genre'>Genre: ${book.genre}</span>`;
+    gridElement.innerHTML = `<svg class="removeBook" id='${index}' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" /></svg><span class='title'>${book.title}</span> by <span class='author'>${book.author}</span> <span class='genre'>Genre: ${book.genre}</span> <button id='${index}' class='button small'>NOT READ</button>`;
     UI.SHELVES.prepend(gridElement);
+    let removeBookBtn = document.querySelector(".removeBook");
+    removeBookBtn.addEventListener("click", (e) => {
+      let bookToRemove = e.currentTarget.id;
+      myLibrary.splice(bookToRemove, 1);
+      displayBookOnHtml();
+    });
+    let readToggleBtn = document.querySelector(".button.small");
+    readToggleBtn.addEventListener("click", (e) => {
+      e.currentTarget.classList.toggle("finished");
+      let indexToToggle = e.currentTarget.id;
+      myLibrary[indexToToggle].changeReadStatus(myLibrary[indexToToggle].read);
+      if (myLibrary[indexToToggle].read == "read") {
+        e.currentTarget.textContent = "READ";
+      } else e.currentTarget.textContent = "NOT READ";
+    });
   });
 }
-
-function removeBook() {}
